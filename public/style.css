@@ -1,0 +1,165 @@
+body {
+  width: 700px;
+  margin: 10px auto;
+  text-align: center;
+  padding: 10px;
+  user-select: none;
+  background-color:  lightslategrey;
+  font-family: 'calibri';
+  color: purple;
+  border: striped purple;
+}
+
+
+h1 {
+  font-size: 50px;
+  text-align: center;
+  height: 60px;
+  font-family: 'calibri';
+  color: darkviolet;
+}
+
+
+span{
+  font-size: 1px;
+  margin-top: 20px;
+}
+
+div[id^="row-"] div {
+  width: 200px;
+  height: 200px;
+  border: 1px solid purple;
+  float: left;
+
+}
+
+div[id^="row-"] div:last-child {
+  border-right: none;
+}
+
+div[id^="row-"] div:first-child {
+  border-left: none;
+}
+
+div[id="row-1"] div{
+  border-top: none;
+}
+
+div[id="row-3"] div{
+    border-bottom: none;
+}
+
+div[id^="row-"] {
+  clear: float;
+  width: 608px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+div.board {
+  width: 608px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.hline {
+  padding-bottom: 10px;
+  border-bottom: 25px dotted purple;
+}
+  
+#turn {
+  font-family: 'calibri';
+  color:darkviolet;
+  font-size: 30px;
+  text-align: center;
+  height: 40px;
+}
+
+#x {
+  margin-top: 38px;
+}
+#o {
+  margin-top: 38px;
+}
+
+
+#top-row {
+  width: 590px;
+  height: 590px;
+  border-bottom: 25px dotted purple;
+  -webkit-transform:
+      translateY(-500px)
+      translateX(5px)
+      rotate(0deg); 
+  position: absolute;
+}
+#middle-row {
+  width: 590px;
+  height: 590px;
+  border-bottom: 25px dotted purple;
+  -webkit-transform:
+  translateY(-300px)
+  translateX(5px)
+  rotate(0deg); 
+position: absolute;
+}
+#bottom-row {
+  width: 590px;
+  height: 590px;
+  border-bottom: 25px dotted purple;
+  -webkit-transform:
+      translateY(-100px)
+      translateX(5px)
+      rotate(0deg); 
+  position: absolute;
+}
+#left-col {
+  width: 590px;
+  height: 590px;
+  border-bottom: 25px dotted purple;
+  -webkit-transform:
+      translateY(0px)
+      translateX(100px)
+      rotate(90deg); 
+  position: absolute;
+}
+#middle-col {
+  width: 590px;
+  height: 590px;
+  border-bottom: 25px dotted purple;
+  -webkit-transform:
+      translateY(0px)
+      translateX(300px)
+      rotate(90deg); 
+  position: absolute;
+}
+#right-col {
+  width: 590px;
+  height: 590px;
+  border-bottom: 25px dotted purple;
+  -webkit-transform:
+      translateY(0px)
+      translateX(500px)
+      rotate(90deg); 
+  position: absolute;
+}
+#back-slash {
+  width: 690px;
+  height: 690px;
+  border-bottom: 25px dotted purple;
+  -webkit-transform:
+      translateY(-300px)
+      translateX(200px)
+      rotate(45deg); 
+  position: absolute;
+}
+#forwar-slash {
+  width: 690px;
+  height: 690px;
+  border-bottom: 25px dotted purple;
+  -webkit-transform:
+      translateY(200px)
+      translateX(200px)
+      rotate(135deg); 
+  position: absolute;
+}
