@@ -1,9 +1,13 @@
 // Constants
+let onePlayerStart = document.getElementById('1-player')
 let twoPlayerStart = document.getElementById('2-player')
+let playerTurn = document.getElementById('playerTurn')
+let winnerContainer = document.getElementById('winner-container')
 
 let playerOne = 'X'
 let playerTwo = 'O'
 let currentPlayer = playerOne
+let winner = null
 
 let cellOne = document.getElementById('cell-1')
 let cellTwo = document.getElementById('cell-2')
@@ -14,7 +18,7 @@ let cellSix = document.getElementById('cell-6')
 let cellSeven = document.getElementById('cell-7')
 let cellEight = document.getElementById('cell-8')
 let cellNine = document.getElementById('cell-9')
-
+let usedCellArray = []
 let cellArray = [cellOne, cellTwo, cellThree, cellFour, cellFive, cellSix, cellSeven, cellEight, cellNine]
 
 /*------------Win Condition Object-------------------*/
@@ -46,6 +50,7 @@ function stopPlay(cellArray) {
 
 function fillSquare(event) {
     event.target.textContent = currentPlayer
+    usedCellArray.push(event.target)
     declareWinner()
     switchPlayer()
     removeFillSquare(event)
@@ -58,8 +63,10 @@ function removeFillSquare(event) {
 function switchPlayer() {
     if(currentPlayer === playerOne) {
         currentPlayer = playerTwo
+        playerTurn.textContent = currentPlayer
     } else if(currentPlayer === playerTwo) {
         currentPlayer = playerOne
+        playerTurn.textContent = currentPlayer
     }   
 }
 
@@ -68,16 +75,35 @@ function declareWinner() {
         if (combo[0].textContent === '') {
             
         } else if (combo[0].textContent === combo[1].textContent && combo[0].textContent === combo[2].textContent) {
-            console.log(currentPlayer + 'WINS!')
+            winner = true
+            markWinner(combo)
+            winnerContainer.textContent = currentPlayer + ' is the WINNER!'
             stopPlay(cellArray)
         }
+    } 
+    drawCondition()
+}
+
+function drawCondition() {
+    if (usedCellArray.length === 9 && winner === null) {
+        console.log('it be a draw yo')
+        stopPlay(cellArray)
+    } else{
+
     }
+}
+
+function markWinner(winningArray) {
+    winningArray.forEach(function (winningCell) {
+        winningCell.className = 'winning'
+    })
 }
 
 // Game plays
 
 twoPlayerStart.addEventListener('click', () => {
-    console.log('the game has started')
+    onePlayerStart.disabled = true
+    twoPlayerStart.disabled = true
+    playerTurn.textContent = currentPlayer
     startPlay(cellArray)
-
 })

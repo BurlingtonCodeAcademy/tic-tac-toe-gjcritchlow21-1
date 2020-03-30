@@ -8,13 +8,20 @@
   <title>Tic Tac Toe</title>
   <link type="text/css" rel="stylesheet" href="style.css">
 </head>
-<h1 id="game-name">Cats & Dogs</h1>
-<h4 id="name2">a subsidiary of Tic-Tac-Toe</h4>
-<button id="1-player" type="button">1 Player</button> or 
-<button id="2-player" type="button">2 Players</button>
-<div id="line"></div>
+
 
 <body>
+  <h1 id="game-name">Cats & Dogs</h1>
+  <h4 id="name2">a subsidiary of Tic-Tac-Toe</h4>
+  <div id='status-wrapper'>
+    <div id='status-container'>
+      <div id='turn-container'>Player Turn: <div id='playerTurn'></div></div>
+      <div id='winner-container'></div>
+    </div>
+  </div>
+  <button id="1-player" type="button">1 Player</button> or
+  <button id="2-player" type="button">2 Players</button>
+  <div id="line"></div>
   <div class="board">
     <div id='top'></div>
     <div id="row-1">
@@ -33,7 +40,7 @@
       <div id="cell-9"></div>
     </div>
   </div>
- 
+
   <script src="newMain.js"></script>
 </body>
 

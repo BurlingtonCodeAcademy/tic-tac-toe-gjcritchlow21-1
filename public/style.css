@@ -60,106 +60,37 @@ div.board {
   width: 608px;
   overflow: hidden;
   margin: 0 auto;
+  font-size: 12rem;
 }
 
 .hline {
   padding-bottom: 10px;
   border-bottom: 25px dotted purple;
 }
+
+#status-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+
+}
+
+#status-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 30vw;
+  height: 10vh;
+  border: 1px purple solid;
   
-#turn {
-  font-family: 'calibri';
-  color:darkviolet;
-  font-size: 30px;
-  text-align: center;
-  height: 40px;
 }
 
-#x {
-  margin-top: 38px;
-}
-#o {
-  margin-top: 38px;
+#turn-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
-
-#top-row {
-  width: 590px;
-  height: 590px;
-  border-bottom: 25px dotted purple;
-  -webkit-transform:
-      translateY(-500px)
-      translateX(5px)
-      rotate(0deg); 
-  position: absolute;
-}
-#middle-row {
-  width: 590px;
-  height: 590px;
-  border-bottom: 25px dotted purple;
-  -webkit-transform:
-  translateY(-300px)
-  translateX(5px)
-  rotate(0deg); 
-position: absolute;
-}
-#bottom-row {
-  width: 590px;
-  height: 590px;
-  border-bottom: 25px dotted purple;
-  -webkit-transform:
-      translateY(-100px)
-      translateX(5px)
-      rotate(0deg); 
-  position: absolute;
-}
-#left-col {
-  width: 590px;
-  height: 590px;
-  border-bottom: 25px dotted purple;
-  -webkit-transform:
-      translateY(0px)
-      translateX(100px)
-      rotate(90deg); 
-  position: absolute;
-}
-#middle-col {
-  width: 590px;
-  height: 590px;
-  border-bottom: 25px dotted purple;
-  -webkit-transform:
-      translateY(0px)
-      translateX(300px)
-      rotate(90deg); 
-  position: absolute;
-}
-#right-col {
-  width: 590px;
-  height: 590px;
-  border-bottom: 25px dotted purple;
-  -webkit-transform:
-      translateY(0px)
-      translateX(500px)
-      rotate(90deg); 
-  position: absolute;
-}
-#back-slash {
-  width: 690px;
-  height: 690px;
-  border-bottom: 25px dotted purple;
-  -webkit-transform:
-      translateY(-300px)
-      translateX(200px)
-      rotate(45deg); 
-  position: absolute;
-}
-#forwar-slash {
-  width: 690px;
-  height: 690px;
-  border-bottom: 25px dotted purple;
-  -webkit-transform:
-      translateY(200px)
-      translateX(200px)
-      rotate(135deg); 
-  position: absolute;
+.winning {
+  color: red
 }
