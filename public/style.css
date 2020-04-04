@@ -4,10 +4,10 @@ body {
   text-align: center;
   padding: 10px;
   user-select: none;
-  background-color:  lightslategrey;
+  background-image: linear-gradient(to bottom right, red, yellow) ;
   font-family: 'calibri';
-  color: purple;
-  border: striped purple;
+  color: black;
+  border: striped black;
 }
 
 
@@ -16,7 +16,7 @@ h1 {
   text-align: center;
   height: 60px;
   font-family: 'calibri';
-  color: darkviolet;
+  color:black;
 }
 
 
@@ -28,7 +28,7 @@ span{
 div[id^="row-"] div {
   width: 200px;
   height: 200px;
-  border: 1px solid purple;
+  border: 1px solid black;
   float: left;
 
 }
@@ -65,7 +65,7 @@ div.board {
 
 .hline {
   padding-bottom: 10px;
-  border-bottom: 25px dotted purple;
+  border-bottom: 25px dotted black;
 }
 
 #status-wrapper{
@@ -81,7 +81,9 @@ div.board {
   justify-content: space-evenly;
   width: 30vw;
   height: 10vh;
-  border: 1px purple solid;
+  border: 1px black solid;
+  border-radius: 25px;
+
   
 }
 
