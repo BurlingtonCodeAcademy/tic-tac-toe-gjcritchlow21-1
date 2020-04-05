@@ -1,28 +1,14 @@
-body {
-  width: 700px;
-  margin: 10px auto;
-  text-align: center;
-  padding: 10px;
-  user-select: none;
-  background-image: linear-gradient(to bottom right, red, yellow) ;
-  font-family: 'calibri';
-  color: black;
-  border: striped black;
-}
+/*-------------------------------Fonts----------------------------------*/
 
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=PT+Serif:ital@1&display=swap');
 
+/*--------------------------Original CSS given------------------------------*/
 h1 {
   font-size: 50px;
   text-align: center;
   height: 60px;
-  font-family: 'calibri';
+  font-family: 'Bangers';
   color:black;
-}
-
-
-span{
-  font-size: 1px;
-  margin-top: 20px;
 }
 
 div[id^="row-"] div {
@@ -61,6 +47,7 @@ div.board {
   overflow: hidden;
   margin: 0 auto;
   font-size: 12rem;
+  align-items: center;
 }
 
 .hline {
@@ -68,6 +55,66 @@ div.board {
   border-bottom: 25px dotted black;
 }
 
+/*---------------------------------My New CSS-------------------------------*/
+
+body {
+  width: 700px;
+  margin: 10px auto;
+  text-align: center;
+  padding: 10px;
+  user-select: none;
+  background-image: linear-gradient(to bottom right, red, yellow) ;
+  font-family: 'calibri';
+  color: black;
+  border: striped black;
+}
+
+#player-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+#player-container{
+  display: flex;
+  justify-content:space-evenly;
+  flex-direction: column;
+  align-items: stretch;
+  width:25vw;
+  height: 12vh;
+  border: 1px black solid;
+  border-radius: 25px;
+  margin-top: 5px;
+}
+
+/*-------------------------------------Buttons--------------------------------*/
+#nameInput{
+  background-image: linear-gradient(to bottom right, yellow, red);
+  font-family: 'PT Serif';
+  border-color: black;
+  border: 1px;
+}
+
+#nameButton{
+  background-image: linear-gradient(to bottom right, yellow, red);
+  font-family: 'PT Serif';
+  border-color: black;
+  border: 1px;
+}
+
+#onePlayer{
+  background-image: linear-gradient(to bottom right, yellow, red);
+  font-family: 'PT Serif';
+  border-color: black;
+  border: 1px;
+}
+
+#twoPlayer{
+  background-image: linear-gradient(to bottom right, yellow, red);
+  font-family: 'PT Serif';
+  border-color: black;
+  border: 1px;
+}
+/*-----------------------------Status Condition Container------------------------*/
 #status-wrapper{
   display: flex;
   justify-content: center;
@@ -83,7 +130,7 @@ div.board {
   height: 10vh;
   border: 1px black solid;
   border-radius: 25px;
-
+  font-family: 'PT Serif';
   
 }
 
@@ -93,6 +140,7 @@ div.board {
   width: 100%;
 }
 
+/*--------------------------You Win!------------------------------*/
 .winning {
-  color: red
+  color: red;
 }

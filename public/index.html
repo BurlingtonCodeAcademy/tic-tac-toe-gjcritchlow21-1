@@ -8,24 +8,35 @@
   <title>Tic Tac Toe</title>
   <link type="text/css" rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <!---------Title and Game Rules Container--------->
+  <!--------------------Title and Game Rules Container------------------>
   <h1 id="game-name">Tic-Tac-Toe</h1>
+  <!--------------------Player/Game Conditions Contianer---------------->
+  <div id="player-wrapper">
+    <div id="player-container">
+      <div id="enter-name">
+        <input type="text" id="nameInput" />
+        <button id="nameButton" type="button">Submit</button>
+      </div>
+      <div id="player-buttons">
+        <button id="onePlayer" type="button">1 Player</button> or
+        <button id="twoPlayer" type="button">2 Players</button>
+      </div>
+    </div>
+  </div>
+  <br>
+  <!---------------------Status Condition Containter-------------------->
   <div id='status-wrapper'>
     <div id='status-container'>
-      <div id='turn-container'>Player Turn: <div id='playerTurn'></div></div>
+      <div id="timer-container">Game Time: <span id="game-timer">00</span></div>
+      <div id='turn-container'>Player Turn: <div id="playerTurn"> </div>
+      </div>
       <div id='winner-container'></div>
     </div>
   </div>
-  <div id="enter-name">
-    <input type="text" id="nameInput" />
-    <button id="nameButton" type="button">Submit</button>
-  </div>
-  <button id="1-player" type="button">1 Player</button> or
-  <button id="2-player" type="button">2 Players</button>
-  <br>
 
-  <!-----------Game Board------------->
+  <!------------------------------Game Board----------------------------->
   <div class="board">
     <div id='top'></div>
     <div id="row-1">
@@ -44,7 +55,7 @@
       <div id="cell-9"></div>
     </div>
   </div>
-<!---------Linking of JS------------>
+  <!-------------------------------Linking of JS----------------------------->
   <script src="newMain.js"></script>
 </body>
 

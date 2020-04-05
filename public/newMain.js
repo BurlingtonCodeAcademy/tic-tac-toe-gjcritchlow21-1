@@ -1,18 +1,24 @@
-/*-------Constants-------*/
+/*--------------------------------Constants-------------------------------*/
 
-let onePlayerStart = document.getElementById("1-player");
-let twoPlayerStart = document.getElementById("2-player");
+//constants that link buttons and display game conditions
+let onePlayerStart = document.getElementById("onePlayer");
+let twoPlayerStart = document.getElementById("twoPlayer");
 let playerTurn = document.getElementById("playerTurn");
 let winnerContainer = document.getElementById("winner-container");
 
-let playerOne = '';
-let playerTwo = '';
+//player and game conditions
+let playerOne = "X";
+let playerTwo = "O";
 let currentPlayer = playerOne;
 let winner = null;
 let nameInput = document.getElementById("nameInput");
 let nameButton = document.getElementById("nameButton");
+let gameTimer = document.getElementById("game-timer");
+let seconds = 0;
+let timer;
+let gameMode;
 
-//Turns cells into variables to be used for win conditions//
+//turns cells into variables to be used for win conditions
 let cellOne = document.getElementById("cell-1");
 let cellTwo = document.getElementById("cell-2");
 let cellThree = document.getElementById("cell-3");
@@ -35,7 +41,7 @@ let cellArray = [
     cellNine,
 ];
 
-/*---------Win Condition Object-------------------*/
+/*---------------------------Win Condition Object-------------------------*/
 
 // object of all winning conditions
 let winCondition = {
@@ -49,46 +55,78 @@ let winCondition = {
     backSlash: [cellSeven, cellFive, cellThree],
 };
 
-/*--------Functions--------*/
+/*---------------------------------Functions--------------------------------*/
 
 //starts game
-function startPlay(cellArray) {
-    cellArray.forEach(function (eachCell) {
-        eachCell.addEventListener("click", fillSquare);
-    });
+function startPlay(event, cellArray) {
+    if (event.target.id === "twoPlayer") {
+        cellArray.forEach(function (eachCell) {
+            eachCell.addEventListener("click", fillSquare);
+        });
+        timer = setInterval(incrementSeconds, 1000);
+        gameMode = "twoPlayer";
+    } else {
+        cellArray.forEach(function (eachCell) {
+            eachCell.addEventListener("click", fillSquare);
+        });
+        timer = setInterval(incrementSeconds, 1000);
+        gameMode = "onePlayer";
+        playerTwo = "Computer"
+    }
 }
-//stops games
+
+//stops game
 function stopPlay(cellArray) {
     cellArray.forEach(function (cell) {
         cell.removeEventListener("click", fillSquare);
     });
 }
-//fills square with appropiate markers
+
+//fills square with appropiate markers and switches players, plays game
 function fillSquare(event) {
-    if (currentPlayer === playerOne) {
-        event.target.textContent = "X";
-        usedCellArray.push(event.target);
-    } else if (currentPlayer === playerTwo) {
-        event.target.textContent = "O";
-        usedCellArray.push(event.target);
+    if (gameMode === "twoPlayer") {
+        if (currentPlayer === playerOne) {
+            event.target.textContent = "X";
+            usedCellArray.push(event.target);
+            switchPlayer();
+        } else if (currentPlayer === playerTwo) {
+            event.target.textContent = "O";
+            usedCellArray.push(event.target);
+            switchPlayer();
+        }
+    } else if (gameMode === 'onePlayer') {
+        if (currentPlayer === playerOne) {
+            event.target.textContent = "X";
+            usedCellArray.push(event.target);
+            switchPlayer()
+            if (usedCellArray.length < 9) {
+                computer()
+            }
+        } else if (currentPlayer === playerTwo) {
+            event.target.textContent = "O";
+            usedCellArray.push(event.target);
+            switchPlayer();
+        }
     }
     declareWinner();
-    switchPlayer();
     removeFillSquare(event);
 }
+
 //stops fillability
 function removeFillSquare(event) {
     event.target.removeEventListener("click", fillSquare);
 }
+
 //input names
 nameButton.addEventListener("click", function () {
-    if (playerOne === '') {
+    if (playerOne === "") {
         namePlayerOne(event);
     } else {
-        namePlayerTwo(event)
+        namePlayerTwo(event);
     }
 });
 
+//allows player one to enter a name, otherwise player is marker
 function namePlayerOne(event) {
     if (nameInput.value === "") {
         playerOne = "X";
@@ -97,9 +135,9 @@ function namePlayerOne(event) {
         playerOne = nameInput.value;
         nameInput.value = "";
     }
-    currentPlayer = playerOne
+    currentPlayer = playerOne;
 }
-
+//same as above function, but for player two
 function namePlayerTwo(event) {
     if (nameInput.value === "") {
         playerTwo = "O";
@@ -108,6 +146,15 @@ function namePlayerTwo(event) {
         playerTwo = nameInput.value;
         nameInput.value = "";
     }
+}
+
+//computer plays
+function computer() {
+    let compPick = cellArray[Math.floor(Math.random() * cellArray.length)];
+    while (usedCellArray.includes(compPick)) {
+        compPick = cellArray[Math.floor(Math.random() * cellArray.length)]
+    }
+    compPick.click()
 }
 
 //toggles players
@@ -119,8 +166,23 @@ function switchPlayer() {
         currentPlayer = playerOne;
         playerTurn.textContent = currentPlayer;
     }
-    console.log(currentPlayer)
 }
+
+//seconds timer starts
+function incrementSeconds() {
+    seconds += 1;
+    if (seconds < 10) {
+        gameTimer.textContent = "0" + seconds;
+    } else {
+        gameTimer.textContent = seconds;
+    }
+}
+
+//stops timer
+function stopTimer() {
+    clearInterval(timer);
+}
+
 //declares winner
 function declareWinner() {
     for (let combo of Object.values(winCondition)) {
@@ -133,15 +195,18 @@ function declareWinner() {
             markWinner(combo);
             winnerContainer.textContent = currentPlayer + " is the WINNER!";
             stopPlay(cellArray);
+            stopTimer();
         }
     }
     drawCondition();
 }
+
 //if tie do this
 function drawCondition() {
     if (usedCellArray.length === 9 && winner === null) {
-        console.log("it be a draw yo");
+        winnerContainer.textContent = "It's a draw...."
         stopPlay(cellArray);
+        stopTimer();
     } else {
     }
 }
@@ -152,11 +217,21 @@ function markWinner(winningArray) {
     });
 }
 
-/*---------Game plays--------*/
+/*-------------------------------Game plays----------------------------*/
+
+//event listeners for player buttons and starts game
+onePlayerStart.addEventListener("click", () => {
+    onePlayerStart.disabled = true;
+    twoPlayerStart.disabled = true;
+    playerTurn.textContent = currentPlayer;
+    startPlay(event, cellArray);
+});
 
 twoPlayerStart.addEventListener("click", () => {
     onePlayerStart.disabled = true;
     twoPlayerStart.disabled = true;
     playerTurn.textContent = currentPlayer;
-    startPlay(cellArray);
+    startPlay(event, cellArray);
 });
+
+
