@@ -59,17 +59,13 @@ let winCondition = {
 
 //starts game
 function startPlay(event, cellArray) {
+    cellArray.forEach(function (eachCell) {
+        eachCell.addEventListener("click", fillSquare);
+    });
+    timer = setInterval(incrementSeconds, 1000);
     if (event.target.id === "twoPlayer") {
-        cellArray.forEach(function (eachCell) {
-            eachCell.addEventListener("click", fillSquare);
-        });
-        timer = setInterval(incrementSeconds, 1000);
         gameMode = "twoPlayer";
     } else {
-        cellArray.forEach(function (eachCell) {
-            eachCell.addEventListener("click", fillSquare);
-        });
-        timer = setInterval(incrementSeconds, 1000);
         gameMode = "onePlayer";
         playerTwo = "Computer"
     }
@@ -88,27 +84,24 @@ function fillSquare(event) {
         if (currentPlayer === playerOne) {
             event.target.textContent = "X";
             usedCellArray.push(event.target);
-            switchPlayer();
         } else if (currentPlayer === playerTwo) {
             event.target.textContent = "O";
             usedCellArray.push(event.target);
-            switchPlayer();
         }
     } else if (gameMode === 'onePlayer') {
         if (currentPlayer === playerOne) {
             event.target.textContent = "X";
-            usedCellArray.push(event.target);
-            switchPlayer()
+            usedCellArray.push(event.target)
             if (usedCellArray.length < 9) {
                 computer()
             }
         } else if (currentPlayer === playerTwo) {
             event.target.textContent = "O";
             usedCellArray.push(event.target);
-            switchPlayer();
         }
     }
     declareWinner();
+    switchPlayer()
     removeFillSquare(event);
 }
 
