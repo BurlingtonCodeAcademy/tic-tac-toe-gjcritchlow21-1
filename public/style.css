@@ -1,0 +1,146 @@
+/*-------------------------------Fonts----------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=PT+Serif:ital@1&display=swap');
+
+/*--------------------------Original CSS given------------------------------*/
+h1 {
+  font-size: 50px;
+  text-align: center;
+  height: 60px;
+  font-family: 'Bangers';
+  color:black;
+}
+
+div[id^="row-"] div {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  float: left;
+
+}
+
+div[id^="row-"] div:last-child {
+  border-right: none;
+}
+
+div[id^="row-"] div:first-child {
+  border-left: none;
+}
+
+div[id="row-1"] div{
+  border-top: none;
+}
+
+div[id="row-3"] div{
+    border-bottom: none;
+}
+
+div[id^="row-"] {
+  clear: float;
+  width: 608px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+div.board {
+  width: 608px;
+  overflow: hidden;
+  margin: 0 auto;
+  font-size: 12rem;
+  align-items: center;
+}
+
+.hline {
+  padding-bottom: 10px;
+  border-bottom: 25px dotted black;
+}
+
+/*---------------------------------My New CSS-------------------------------*/
+
+body {
+  width: 700px;
+  margin: 10px auto;
+  text-align: center;
+  padding: 10px;
+  user-select: none;
+  background-image: linear-gradient(to bottom right, red, yellow) ;
+  font-family: 'calibri';
+  color: black;
+  border: striped black;
+}
+
+#player-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+#player-container{
+  display: flex;
+  justify-content:space-evenly;
+  flex-direction: column;
+  align-items: stretch;
+  width:25vw;
+  height: 12vh;
+  border: 1px black solid;
+  border-radius: 25px;
+  margin-top: 5px;
+}
+
+/*-------------------------------------Buttons--------------------------------*/
+#nameInput{
+  background-image: linear-gradient(to bottom right, yellow, red);
+  font-family: 'PT Serif';
+  border-color: black;
+  border: 1px;
+}
+
+#nameButton{
+  background-image: linear-gradient(to bottom right, yellow, red);
+  font-family: 'PT Serif';
+  border-color: black;
+  border: 1px;
+}
+
+#onePlayer{
+  background-image: linear-gradient(to bottom right, yellow, red);
+  font-family: 'PT Serif';
+  border-color: black;
+  border: 1px;
+}
+
+#twoPlayer{
+  background-image: linear-gradient(to bottom right, yellow, red);
+  font-family: 'PT Serif';
+  border-color: black;
+  border: 1px;
+}
+/*-----------------------------Status Condition Container------------------------*/
+#status-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+
+}
+
+#status-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 30vw;
+  height: 10vh;
+  border: 1px black solid;
+  border-radius: 25px;
+  font-family: 'PT Serif';
+  
+}
+
+#turn-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/*--------------------------You Win!------------------------------*/
+.winning {
+  color: red;
+}
